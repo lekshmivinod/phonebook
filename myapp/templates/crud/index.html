@@ -1,0 +1,58 @@
+
+  {% extends 'crud/base.html' %}
+    {% block body %}
+<form class="form-inline" action="create" method="POST" >
+    {% csrf_token %}
+    <div class="form-group">
+        <label > Firstname</label>
+        <input type="text" name="Firstname" class="form.control" style="width:20%;" required="required"/>
+         <label > Lastname</label>
+        <input type="text" name="Lastname" class="form.control" style="width:20%;" required="required"/>
+         <label > Phonenumber</label>
+        <input type="text" name="Phonenumber" class="form.control" style="width:20%;" required="required"/>
+        <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span>ADD</button>
+
+    </div>
+</form>
+<br>
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th> Firstname</th>
+            <th> Lastname </th>
+            <th> Phonenumber</th>
+            <th> Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for member in members %}
+    <tr>
+        <td> {{ member.Firstname }}</td>
+        <td> {{ member.Lastname }}</td>
+        <td> {{ member.Phonenumber }}</td>
+        <td><center>
+        <!--<a class="btn btn-sm btn-warning">-->
+
+            <a class="btn btn-sm btn-warning" href="edit/{{ member.id }}" > <span class="glyphicon glyphicon-edit"></span>EDIT</a>
+            <a class="btn btn-sm btn-danger" href="delete/{{ member.id }}" > <span class="glyphicon glyphicon-trash"></span>DELETE</a>
+
+            <!--<button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-edit"></span>EDIT</button>-->
+
+
+            <!--<button type="submit" class="btn btn-sm btn-danger "><span class="glyphicon glyphicon-trash"></span>DELETE</button>-->
+
+
+
+
+
+
+  </button>
+        </center></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+
+</table>
+{% endblock %}
+
